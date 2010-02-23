@@ -9,7 +9,8 @@ dateq = ARGV[0]
 basedir = '/var/spool/asterisk/monitorDONE/MP3'
 `mkdir -p "#{basedir}/#{dateq}"`
 #{}`/usr/bin/find "#{basedir}"/ -maxdepth 1 -iname '*"#{dateq}"*' -type f  | xargs -i mv -f {} "#{dateq}"/`
-system "/usr/bin/find #{basedir}/ -maxdepth 1 -iname '*#{dateq}*' -type f  | xargs -i mv -f {} #{dateq}/"
-puts "/usr/bin/find #{basedir}/ -maxdepth 1 -iname '*#{dateq}*' -type f  | xargs -i mv -f {} #{dateq}/"
+move_command = "/usr/bin/find #{basedir}/ -maxdepth 1 -iname '*#{dateq}*' -type f  | xargs -i mv -f {} #{dateq}/"
+exec move_command
+puts "#{move_command} .. executed..."
 
 
